@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.talicai.library">
+          package="com.licaigc.library">
 
     <application
         android:allowBackup="true"
