@@ -24,7 +24,12 @@ android:
     # - sys-img-armeabi-v7a-android-19
     # - sys-img-x86-android-17
 
-script: "chmod +x ./gradlew && ./gradlew bintrayUpload"
+before_script: "chmod +x ./gradlew"
+script: "./gradlew assembleRelease"
+
+deploy: "./gradlew bintrayUpload"
+  on:
+    tags: true
 
 env:
   global:
