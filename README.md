@@ -2,7 +2,29 @@
 我场 Android 平台基础库
 
 # Usage
+
+1. app/build.gradle:
+
 `compile 'com.licaigc:androidbaselibrary:+'`
+
+2. app/XxxApplication.java:
+
+```java
+public class TimiApplication extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        ...
+
+        AndroidBaseLibrary.initialize(getApplicationContext());
+
+        ...
+    }
+}
+```
+
+具体使用, 请见 [wiki](https://github.com/licaigc/androidbaselibrary/wiki).
 
 # Branch Management
 master: 作为主要开发分支.
