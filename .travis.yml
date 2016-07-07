@@ -1,0 +1,31 @@
+language: android
+android:
+  components:
+    # Uncomment the lines below if you want to
+    # use the latest revision of Android SDK Tools
+    - platform-tools
+    - tools
+
+    # The BuildTools version used by your project
+    - build-tools-23.0.3
+
+    # The SDK version used to compile your project
+    - android-23
+
+    # Additional components
+    # - extra-google-google_play_services
+    # - extra-google-m2repository
+    - extra-android-m2repository
+    - extra-android-support
+    # - addon-google_apis-google-19
+
+    # Specify at least one system image,
+    # if you need to run emulator(s) during your tests
+    # - sys-img-armeabi-v7a-android-19
+    # - sys-img-x86-android-17
+
+script: "chmod +x ./gradlew && ./gradlew bintrayUpload"
+
+env:
+  global:
+    - secure: "QJg0SILM/4LePIuiivsBa4RgxuppcQMZTOavTzX3r1gh4KRr4jcNCuqEyd8PP22TyWFHHFUyu1NpShHzC2GUMiISevDdJoRGJJGj3RB/auWsMFzmQN0XeZEDG6hLbJHIbZAEZnwzOCvSrzR1R17QJKRN6nFA4vwQNzUEo5KMsfMnpWwYmYiOuJ65UX4oSDObKX1oIeaNrawp78njU0acf+6WER27axAxODDN7d5hE7RpUPOKyVn+9/Oqb4bg6y8RlSG3TI6zpMDdhfnPxwdHs0b4OfaqOA5wBI58bqBEpvbTCcg5h4OepvYmke0sVQCJL4TzIdXM63io34+4wgC9siKISGNyUmkjPuJDzP1Q7ueYuXtL1Lyu/weCKA4Oogy8fcY0yesfG73qavvpT5GqT+SGSBk1EZko/+cGGWQJas7/dEUfsgRT56gR4UZPkWTJa3KFNjbu8qeJaz7cwsA+6Tpt8lpXqosk1XElbuIvzY02o52AhzkQkJo422Fe7wqUqwfLNNGQkU9fRxFp414mkFElK0y66Jq21CjCClaBu7WGPONG2+vvApSdP2StH+aY9iamc3ib+TwnEa15GwxCZxm386pzvsWAKU9Qel9KbDLL/nv16QshRq4X1eN0HC5lBxeQkOLF2FtHj/1ixbg+9hZVGnjzVgQEIOTde0ecxLc="
