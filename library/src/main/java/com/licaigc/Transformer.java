@@ -272,7 +272,7 @@ public class Transformer {
     // Http
 
     /**
-     * Translate map parameter to http GET url format. Url-Encoded automatically and Skip empty value
+     * Translate map parameter to http GET url format. Url-Encoded automatically and Skip `null` value but Keep empty value.
      * @param params
      * @return
      * @see #map2HttpGetParam(Map, boolean, int)
@@ -282,7 +282,7 @@ public class Transformer {
     }
 
     public static String map2HttpGetParam(Map<String, String> params, boolean doEncode) {
-        return map2HttpGetParam(params, doEncode, 0);
+        return map2HttpGetParam(params, doEncode, MAP2HTTPGETPARAM_SKIP_NULL);
     }
 
     /**
