@@ -34,13 +34,14 @@ public class Statistics {
     public static void reportStartupInfo(int appId) {
         final String REPORT_URL = "http://click.licaigc.cn/r/app";
         Map<String, String> params = Transformer.asMap(
+                "os", String.valueOf(OS_ANDROID),
+                "osversion", Build.VERSION.RELEASE,
                 "mac", DeviceInfo.getMacAddress(),
                 "imei", DeviceInfo.getImei(),
-                "model", Build.MANUFACTURER,
                 "androidid", DeviceInfo.getAndroidId(),
-                "os", String.valueOf(OS_ANDROID),
-                "version", PackageUtils.getVersionName(),
-                "versioncode", String.valueOf(PackageUtils.getVersionCode()),
+                "model", Build.MANUFACTURER,
+                "appversion", PackageUtils.getVersionName(),
+                "buildcode", String.valueOf(PackageUtils.getVersionCode()),
                 "channel", ManifestUtils.getMeta("UMENG_CHANNEL"),
                 "ip", DeviceInfo.getIpAddress(),
                 "site", String.valueOf(APP_ID_TIMI)
