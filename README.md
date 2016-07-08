@@ -28,6 +28,7 @@ public class TimiApplication extends Application {
 
 # Branch Management
 master: 作为主要开发分支.
+
 tag: 作为发布分支.
 
 # Coding Style
