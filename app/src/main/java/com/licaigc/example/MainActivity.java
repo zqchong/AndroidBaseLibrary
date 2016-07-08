@@ -2,6 +2,7 @@ package com.licaigc.example;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import com.licaigc.AndroidBaseLibrary;
@@ -16,10 +17,20 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mBtn = (Button) findViewById(R.id.btn);
-        mBtn.setOnClickListener(v -> Statistics.reportStartupInfo(1));
+        mBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Statistics.reportStartupInfo(1);
+            }
+        });
 
         AndroidBaseLibrary.initialize(getApplicationContext());
 
-        mBtn.post(() -> mBtn.performClick());
+        mBtn.post(new Runnable() {
+            @Override
+            public void run() {
+                mBtn.performClick();
+            }
+        });
     }
 }

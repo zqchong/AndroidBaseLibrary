@@ -13,6 +13,7 @@ import java.util.Map;
 
 import rx.Observable;
 import rx.Subscriber;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -44,25 +45,28 @@ public class Statistics {
                 "ip", DeviceInfo.getIpAddress(),
                 "site", String.valueOf(APP_ID_TIMI)
         );
-        String param = Transformer.map2HttpGetParam(params, true, Transformer.MAP2HTTPGETPARAM_SKIP_EMPTY);
+        final String param = Transformer.map2HttpGetParam(params, true, Transformer.MAP2HTTPGETPARAM_SKIP_EMPTY);
         Observable.<Void>just(null)
                 .observeOn(Schedulers.io())
-                .map(aVoid -> {
-                    HttpURLConnection urlConnection = null;
-                    try {
-                        urlConnection = (HttpURLConnection) new URL(String.format("%s/?%s", REPORT_URL, param)).openConnection();
-                        urlConnection.setRequestMethod("GET");
-                        urlConnection.getResponseCode();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    } finally {
-                        if (urlConnection != null) {
-                            urlConnection.disconnect();
+                .map(new Func1<Void, Void>() {
+                    @Override
+                    public Void call(Void aVoid) {
+                        HttpURLConnection urlConnection = null;
+                        try {
+                            urlConnection = (HttpURLConnection) new URL(String.format("%s/?%s", REPORT_URL, param)).openConnection();
+                            urlConnection.setRequestMethod("GET");
+                            urlConnection.getResponseCode();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        } finally {
+                            if (urlConnection != null) {
+                                urlConnection.disconnect();
+                            }
                         }
+                        return null;
                     }
-                    return null;
                 })
-                .subscribe(new Subscriber<Object>() {
+                .subscribe(new Subscriber<Void>() {
                     @Override
                     public void onCompleted() {
 
@@ -74,7 +78,7 @@ public class Statistics {
                     }
 
                     @Override
-                    public void onNext(Object o) {
+                    public void onNext(Void aVoid) {
 
                     }
                 });
