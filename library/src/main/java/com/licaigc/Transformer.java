@@ -278,7 +278,11 @@ public class Transformer {
      * @see #map2HttpGetParam(Map, boolean, int)
      */
     public static String map2HttpGetParam(Map<String, String> params) {
-        return map2HttpGetParam(params, true, 0);
+        return map2HttpGetParam(params, true);
+    }
+
+    public static String map2HttpGetParam(Map<String, String> params, boolean doEncode) {
+        return map2HttpGetParam(params, doEncode, 0);
     }
 
     /**
@@ -324,6 +328,14 @@ public class Transformer {
 
                 default:
                     break;
+            }
+
+            // Avoid the "null" hole
+            if (k == null) {
+                k = "";
+            }
+            if (v == null) {
+                v = "";
             }
 
             if (doEncode) {
