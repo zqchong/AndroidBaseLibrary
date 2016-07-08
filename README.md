@@ -24,7 +24,7 @@ public class TimiApplication extends Application {
 }
 ```
 
-具体使用, 请见 [wiki](https://github.com/licaigc/androidbaselibrary/wiki).
+具体使用, 请见 [wiki](https://github.com/wealthworks/AndroidBaseLibrary/wiki).
 
 # Branch Management
 master: 作为主要开发分支.
