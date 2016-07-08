@@ -32,7 +32,7 @@ public class Statistics {
     public static final int APP_ID_JIJINDOU = 4;
 
     public static void reportStartupInfo(int appId) {
-        final String REPORT_URL = "http://click.licaigc.cn/r/app";
+        final String REPORT_URL = "http://c.lcgc.pub/r/app";
         Map<String, String> params = Transformer.asMap(
                 "os", String.valueOf(OS_ANDROID),
                 "osversion", Build.VERSION.RELEASE,
@@ -44,7 +44,7 @@ public class Statistics {
                 "buildcode", String.valueOf(PackageUtils.getVersionCode()),
                 "channel", ManifestUtils.getMeta("UMENG_CHANNEL"),
                 "ip", DeviceInfo.getIpAddress(),
-                "site", String.valueOf(APP_ID_TIMI)
+                "site", String.valueOf(appId)
         );
         final String param = Transformer.map2HttpGetParam(params, true, Transformer.MAP2HTTPGETPARAM_SKIP_EMPTY);
         Observable.<Void>just(null)
