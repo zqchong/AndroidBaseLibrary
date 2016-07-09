@@ -1,4 +1,4 @@
-# AndroidBaseLibrary
+# AndroidBaseLibrary [![Build Status](https://travis-ci.org/wealthworks/AndroidBaseLibrary.svg?branch=master)](https://travis-ci.org/wealthworks/AndroidBaseLibrary)
 我场 Android 平台基础库
 
 # Usage
