@@ -80,3 +80,6 @@ public class Foo {
 
 # Maintainer
 得明(songdeming@licaigc.com)
+
+# Powered by
+[![licaigc](https://raw.githubusercontent.com/wealthworks/AndroidBaseLibrary/master/doc/licaigc.png)](http://www.talicai.com/)
