@@ -3,11 +3,11 @@
 
 # Usage
 
-**app/build.gradle:**
+app/**build.gradle:**
 
 `compile 'com.licaigc:androidbaselibrary:+'`
 
-**app/XxxApplication.java:**
+app/**XxxApplication.java:**
 
 ```java
 public class TimiApplication extends Application {
