@@ -77,6 +77,7 @@ public class Foo {
 
 # Contribution
 发起 PR, 我会尽快 Merge.
+请注意, 新增功能请写注释, 并**在 wiki 中补充说明**.
 
 # Maintainer
 得明(songdeming@licaigc.com)
