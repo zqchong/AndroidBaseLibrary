@@ -7,6 +7,15 @@ app/**build.gradle:**
 
 `compile 'com.licaigc:androidbaselibrary:+'`
 
+建议各位在理解 [Semantic Versioning](http://semver.org/) 的前提下, 根据版本号合理规划引入方式. 我介绍几种常见的场景:
+
+1. 需要某个稳定的功能: (适合大部分使用者)
+`compile 'com.licaigc:androidbaselibrary:1.2.+'`
+2. 希望使用最新加入的功能:
+`compile 'com.licaigc:androidbaselibrary:1.+'`
+3. 希望体验最新的功能和语法:
+`compile 'com.licaigc:androidbaselibrary:+'`
+
 app/**XxxApplication.java:**
 
 ```java
