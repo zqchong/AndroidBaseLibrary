@@ -1,5 +1,5 @@
 # AndroidBaseLibrary [![Build Status](https://travis-ci.org/wealthworks/AndroidBaseLibrary.svg?branch=master)](https://travis-ci.org/wealthworks/AndroidBaseLibrary)
-我场 Android 平台基础库
+我场 Android 平台基础库. 部分代码 forked from [WallE](https://github.com/walfud/WallE). 部分功能进行了定制和删改. 遵循 Apache 2.0 协议.
 
 # Usage
 
@@ -90,6 +90,22 @@ public class Foo {
 
 # Maintainer
 得明(songdeming@licaigc.com)
+
+License
+=======
+    Copyright 2013 WealthWorks, Inc.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
 
 # Powered by
 [![licaigc](https://raw.githubusercontent.com/wealthworks/AndroidBaseLibrary/master/doc/licaigc.png)](http://www.talicai.com/)
