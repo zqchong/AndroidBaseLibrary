@@ -7,6 +7,12 @@ public class ObjectUtils {
 
     public static final String TAG = "ObjectUtils";
 
+    /**
+     * sdk 19 后, 可以考虑使用 {@link java.util.Objects#equals(Object, Object)}
+     * @param x
+     * @param y
+     * @return
+     */
     public static boolean isEqual(Object x, Object y) {
         if (x != null) {
             return x.equals(y);
@@ -17,17 +23,5 @@ public class ObjectUtils {
         }
 
         return true;
-    }
-
-    public static <T extends Comparable<T>> int compare(T x, T y) {
-        if (x != null) {
-            return x.compareTo(y);
-        }
-
-        if (y != null) {
-            return y.compareTo(x) * -1;
-        }
-
-        return 0;
     }
 }
