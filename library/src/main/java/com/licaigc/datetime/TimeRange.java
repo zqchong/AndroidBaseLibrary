@@ -20,8 +20,8 @@ public class TimeRange {
     }
 
     public static Pair<Long, Long> getDay(long ms) {
-        long day = ms / MS_PER_D;
-        return new Pair<>(day * MS_PER_D, (day + 1) * MS_PER_D);
+        long begin = CleanerCalendar.getDay(ms).getTimeInMillis();
+        return new Pair<>(begin, begin + MS_PER_D);
     }
 
     public static Pair<Long, Long> getWeek() {
@@ -30,7 +30,7 @@ public class TimeRange {
 
     public static Pair<Long, Long> getWeek(long ms) {
         long begin = CleanerCalendar.getWeek(ms).getTimeInMillis();
-        return new Pair<>(begin, (begin + MS_PER_W));
+        return new Pair<>(begin, begin + MS_PER_W);
     }
 
     public static Pair<Long, Long> getMonth() {
