@@ -54,7 +54,7 @@ public class Foo {
     public Foo() {
 
     }
-    public Foo(id) {
+    private Foo(id) {
         mId = id;
     }
 
