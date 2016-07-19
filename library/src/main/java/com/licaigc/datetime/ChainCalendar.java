@@ -149,15 +149,14 @@ public class ChainCalendar {
         return mCalendar.after(calendar);
     }
 
-    public static Calendar getInstance() {
-        return Calendar.getInstance();
+    public static ChainCalendar getInstance() {
+        return new ChainCalendar(Calendar.getInstance());
     }
 
-    public static Calendar getInstance(long ms) {
+    public static ChainCalendar getInstance(long ms) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(ms);
-
-        return calendar;
+        return new ChainCalendar(calendar);
     }
 
     public String getDisplayName(int field, int style, Locale locale) {
@@ -194,7 +193,7 @@ public class ChainCalendar {
         return this;
     }
 
-    public Calendar toCalendar() {
+    public Calendar getCalendar() {
         return mCalendar;
     }
 }
