@@ -1,5 +1,6 @@
 package com.licaigc.widget;
 
+import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -18,10 +19,11 @@ public class WidgetUtils {
     public static boolean isTouchInView(MotionEvent motionEvent, View view) {
         int[] viewXy = new int[2];
         view.getLocationOnScreen(viewXy);
+        Rect viewRect = new Rect(viewXy[0], viewXy[1], viewXy[0] + view.getWidth(), viewXy[1] + view.getHeight());
 
         float x = motionEvent.getRawX();
         float y = motionEvent.getRawY();
-        return viewXy[0] <= x && x <= viewXy[0] + view.getWidth()
-                && viewXy[1] <= y && y <= viewXy[1] + view.getHeight();
+
+        return viewRect.contains((int) x, (int) y);
     }
 }
