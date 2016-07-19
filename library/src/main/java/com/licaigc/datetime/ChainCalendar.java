@@ -110,8 +110,8 @@ public class ChainCalendar {
         return this;
     }
 
-    public static Calendar getInstance(Locale locale) {
-        return Calendar.getInstance(locale);
+    public static ChainCalendar getInstance(Locale locale) {
+        return new ChainCalendar(Calendar.getInstance(locale));
     }
 
     public ChainCalendar clear(int field) {
@@ -119,8 +119,8 @@ public class ChainCalendar {
         return this;
     }
 
-    public static Calendar getInstance(TimeZone timezone, Locale locale) {
-        return Calendar.getInstance(timezone, locale);
+    public static ChainCalendar getInstance(TimeZone timezone, Locale locale) {
+        return new ChainCalendar(Calendar.getInstance(timezone, locale));
     }
 
     public ChainCalendar setFirstDayOfWeek(int value) {
@@ -171,8 +171,8 @@ public class ChainCalendar {
         return mCalendar.getMinimalDaysInFirstWeek();
     }
 
-    public static Calendar getInstance(TimeZone timezone) {
-        return Calendar.getInstance(timezone);
+    public static ChainCalendar getInstance(TimeZone timezone) {
+        return new ChainCalendar(Calendar.getInstance(timezone));
     }
 
     public ChainCalendar set(int year, int month, int day) {
