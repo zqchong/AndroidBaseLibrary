@@ -8,8 +8,8 @@ android {
         applicationId "com.licaigc.androidbaselibrary"
         minSdkVersion 12
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0.1"
+        versionCode 1023
+        versionName "2.3.3"
     }
     buildTypes {
         release {

@@ -1,7 +1,11 @@
 package com.licaigc;
 
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
+
+import java.io.File;
 
 /**
  * Created by walfud on 2016/7/8.
@@ -45,6 +49,13 @@ public class PackageUtils {
         }
 
         return null;
+    }
+
+    public static void installPackage(File apk) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setDataAndType(Uri.fromFile(apk), "application/vnd.android.package-archive");
+        AndroidBaseLibrary.getContext().startActivity(intent);
     }
 
     //

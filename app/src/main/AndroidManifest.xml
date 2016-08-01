@@ -19,7 +19,7 @@
 
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="xioami"></meta-data>
+            android:value="baidushoujizhushou"></meta-data>
 
     </application>
 
