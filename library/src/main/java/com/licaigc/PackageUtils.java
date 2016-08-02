@@ -56,6 +56,13 @@ public class PackageUtils {
         }
     }
 
+    public static void installPackage(File apk) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setDataAndType(Uri.fromFile(apk), "application/vnd.android.package-archive");
+        AndroidBaseLibrary.getContext().startActivity(intent);
+    }
+
     //
     private interface IPackageInfoGetter<T> {
         T get(PackageInfo packageInfo);

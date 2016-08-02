@@ -6,9 +6,10 @@ import android.view.View;
 import android.widget.Button;
 
 import com.licaigc.AndroidBaseLibrary;
-import com.licaigc.statistics.Statistics;
+import com.licaigc.update.UpdateUtils;
 
 public class MainActivity extends Activity {
+    public static final String TAG = "MainActivity";
 
     private Button mBtn;
 
@@ -20,7 +21,7 @@ public class MainActivity extends Activity {
         mBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Statistics.reportStartupInfo(1);
+                UpdateUtils.checkUpdate(MainActivity.this, "123");
             }
         });
 

@@ -56,6 +56,7 @@ public class IoUtils {
                     fileOutputStream.close();
                 } catch (Exception e) {
                     e.printStackTrace();
+                    return null;
                 }
             }
         }
