@@ -10,5 +10,5 @@ import rx.Observable;
  */
 public interface IUpdate {
     @GET("update/check")
-    Observable<ResponseCheckUpdate> checkUpdate(@Query("appkey") String appKey, @Query("version") String versionName, @Query("code") int versionCode, @Query("channel") String channel);
+    Observable<ResponseCheckUpdate> checkUpdate(@Query("pkg_name") String pkgName, @Query("version") String versionName, @Query("code") int versionCode, @Query("channel") String channel);
 }
