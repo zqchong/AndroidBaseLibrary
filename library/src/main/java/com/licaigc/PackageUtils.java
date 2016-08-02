@@ -47,6 +47,15 @@ public class PackageUtils {
         return null;
     }
 
+    public static boolean isPackageInstalled(String packageName) {
+        try {
+            AndroidBaseLibrary.getContext().getPackageManager().getPackageInfo(packageName, 0);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     //
     private interface IPackageInfoGetter<T> {
         T get(PackageInfo packageInfo);
