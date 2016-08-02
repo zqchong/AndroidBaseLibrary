@@ -54,6 +54,9 @@ public abstract class EasySubscriber<T> extends Subscriber<T> {
 
     /**
      * 总会被调用
+     * @param suc 成功返回 `true`, 失败返回 `false`
+     * @param result 成功时有效
+     * @param throwable 失败时有效
      */
     public abstract void onFinish(boolean suc, T result, Throwable throwable);
 }
