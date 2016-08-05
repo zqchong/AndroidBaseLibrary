@@ -73,7 +73,7 @@ public class UpdateUtils {
             e.printStackTrace();
         }
         updateInterface.checkUpdate(appKey, packageInfo.versionName, packageInfo.versionCode, ManifestUtils.getMeta("UMENG_CHANNEL"))
-//        updateInterface.checkUpdate("com.baidu.appsearch", "2.3.0", 1, "baidushoujizhushou")
+//        updateInterface.checkUpdate("com.talicai.timiclient", "2.3.4", 1, "anzhuoshichang")
                 .subscribeOn(Schedulers.io())
                 .concatMap(new Func1<ResponseCheckUpdate, Observable<ResponseCheckUpdate>>() {
                     @Override
@@ -121,6 +121,10 @@ public class UpdateUtils {
                         if (context.getTheme().resolveAttribute(android.R.attr.colorPrimary, typedValue, true)) {
                             int primaryColor = typedValue.data;
                             okBtn.setBackgroundColor(primaryColor);
+                        }
+                        if (responseCheckUpdate.data.force) {
+                            cancelBtn.setVisibility(View.GONE);
+                            dialog.setCancelable(false);
                         }
                         okBtn.setOnClickListener(new View.OnClickListener() {
                             @Override

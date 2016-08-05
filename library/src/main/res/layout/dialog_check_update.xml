@@ -44,6 +44,7 @@
             android:layout_width="130dp"
             android:layout_height="44dp"
             android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
             android:background="@drawable/rectangle_empty"
             android:text="我知道了"
             android:textColor="#FF9B9B9B"/>
@@ -51,7 +52,6 @@
             android:id="@+id/btn_ok"
             android:layout_width="130dp"
             android:layout_height="44dp"
-            android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical"
             android:text="立即升级"
             android:textColor="@android:color/white"
