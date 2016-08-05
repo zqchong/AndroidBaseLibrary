@@ -1,10 +1,11 @@
-package com.licaigc.widget;
+package com.licaigc.view;
 
 import android.content.Context;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
+
 
 /**
  * Simulate the developer toggle hint.

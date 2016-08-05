@@ -1,7 +1,11 @@
 package com.licaigc;
 
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
+
+import java.io.File;
 
 /**
  * Created by walfud on 2016/7/8.

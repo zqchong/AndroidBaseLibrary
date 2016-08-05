@@ -6,6 +6,7 @@ import android.view.View;
 
 /**
  * Created by walfud on 2016/7/18.
+ * @deprecated use {@link com.licaigc.view.ViewUtils} instead
  */
 public class WidgetUtils {
     public static final String TAG = "WidgetUtils";
