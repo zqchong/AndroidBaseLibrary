@@ -261,7 +261,8 @@ public class NetworkUtils {
     }
 
     /**
-     * 需要 'WRITE_EXTERNAL_STORAGE' 权限
+     * 需要 'WRITE_EXTERNAL_STORAGE' 权限. 此外, 会读取 'style/primaryColor' 属性.
+     *
      * @param url
      * @param target
      * @param onDownloadBySystem
