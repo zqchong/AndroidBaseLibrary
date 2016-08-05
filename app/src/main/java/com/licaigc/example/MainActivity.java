@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.licaigc.AndroidBaseLibrary;
 import com.licaigc.update.UpdateUtils;
@@ -21,7 +22,12 @@ public class MainActivity extends Activity {
         mBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdateUtils.checkUpdate(MainActivity.this, "123");
+                UpdateUtils.checkUpdate(MainActivity.this, "123", new UpdateUtils.OnCheckUpdate() {
+                    @Override
+                    public void onFinish(boolean okOrCancel) {
+                        Toast.makeText(MainActivity.this, String.valueOf(okOrCancel), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 

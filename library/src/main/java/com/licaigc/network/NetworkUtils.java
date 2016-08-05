@@ -1,5 +1,15 @@
 package com.licaigc.network;
 
+import android.app.DownloadManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.database.Cursor;
+import android.net.Uri;
+
+import com.licaigc.AndroidBaseLibrary;
+import com.licaigc.PermissionUtils;
 import com.licaigc.io.IoUtils;
 import com.licaigc.rxjava.SimpleEasySubscriber;
 
@@ -64,6 +74,7 @@ public class NetworkUtils {
          */
         void onFinish(boolean suc, byte[] result, Throwable throwable);
     }
+
     public static void get(String url, final OnGet onGet) {
         get(url).subscribe(new SimpleEasySubscriber<byte[]>() {
             @Override
@@ -87,6 +98,7 @@ public class NetworkUtils {
          * @return 返回 false 表明请求取消任务, 则不再收到后续 `onData` 回调, 同时 `onFinish` 认为失败
          */
         boolean onData(byte[] bytes, long totalLength, long receivedLength);
+
         /**
          * 总会被调用
          *
@@ -100,10 +112,12 @@ public class NetworkUtils {
         @Override
         public void onStart() {
         }
+
         @Override
         public boolean onData(byte[] bytes, long totalLength, long receivedLength) {
             return true;
         }
+
         @Override
         public void onFinish(boolean suc, Throwable throwable) {
         }
@@ -240,6 +254,51 @@ public class NetworkUtils {
                 }
             }
         });
+    }
+
+    public interface OnDownloadBySystem {
+        void onFinish(boolean suc, File file);
+    }
+
+    /**
+     * 需要 'WRITE_EXTERNAL_STORAGE' 权限
+     * @param url
+     * @param target
+     * @param onDownloadBySystem
+     */
+    public static void downloadBySystem(String url, File target, final OnDownloadBySystem onDownloadBySystem) {
+        if (!PermissionUtils.hasPermission("android.permission.WRITE_EXTERNAL_STORAGE")) {
+            return;
+        }
+
+        Context appContext = AndroidBaseLibrary.getContext();
+
+        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+        request.setDestinationUri(Uri.fromFile(target));
+        final DownloadManager downloadManager = (DownloadManager) appContext.getSystemService(Context.DOWNLOAD_SERVICE);
+        final long id = downloadManager.enqueue(request);
+        appContext.registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Cursor cursor = downloadManager.query(new DownloadManager.Query().setFilterById(id));
+                if (cursor.moveToFirst()) {
+                    Uri localUri = Uri.parse(cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI)));
+                    switch (cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS))) {
+                        case DownloadManager.STATUS_SUCCESSFUL:
+                            if (onDownloadBySystem != null) {
+                                onDownloadBySystem.onFinish(true, new File(localUri.getPath()));
+                            }
+                            break;
+                        case DownloadManager.STATUS_FAILED:
+                            if (onDownloadBySystem != null) {
+                                onDownloadBySystem.onFinish(false, null);
+                            }
+                            break;
+                    }
+                }
+                cursor.close();
+            }
+        }, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
     }
 
     //
