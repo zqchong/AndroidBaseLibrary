@@ -239,10 +239,11 @@ public class NetworkUtils {
             @Override
             public boolean onData(byte[] bytes, long totalLength, long receivedLength) {
                 boolean ret = super.onData(bytes, totalLength, receivedLength);
+                IoUtils.output(target, bytes, bytes.length == receivedLength);
+
                 if (onDownloadFileWithProgress != null) {
                     ret = onDownloadFileWithProgress.onProgress((int) (receivedLength * 100 / totalLength));
                 }
-
                 return ret;
             }
 

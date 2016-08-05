@@ -42,9 +42,13 @@ public class IoUtils {
      * @return null if fail
      */
     public static File output(File file, byte[] bytes) {
+        return output(file, bytes, false);
+    }
+
+    public static File output(File file, byte[] bytes, boolean append) {
         FileOutputStream fileOutputStream = null;
         try {
-            fileOutputStream = new FileOutputStream(file);
+            fileOutputStream = new FileOutputStream(file, append);
             fileOutputStream.write(bytes);
             fileOutputStream.flush();
         } catch (Exception e) {
