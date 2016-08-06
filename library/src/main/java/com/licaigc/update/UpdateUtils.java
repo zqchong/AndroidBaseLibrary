@@ -57,9 +57,9 @@ public class UpdateUtils {
      * 需要 'WRITE_EXTERNAL_STORAGE' 权限
      *
      * @param context
-     * @param appKey
+     * @param pkgName
      */
-    public static void checkUpdate(final Context context, String appKey, final OnCheckUpdate onCheckUpdate) {
+    public static void checkUpdate(final Context context, String pkgName, final OnCheckUpdate onCheckUpdate) {
         if (!PermissionUtils.hasPermission("android.permission.WRITE_EXTERNAL_STORAGE")) {
             return;
         }
@@ -72,7 +72,7 @@ public class UpdateUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        updateInterface.checkUpdate(appKey, packageInfo.versionName, packageInfo.versionCode, ManifestUtils.getMeta("UMENG_CHANNEL"))
+        updateInterface.checkUpdate(pkgName, packageInfo.versionName, packageInfo.versionCode, ManifestUtils.getMeta("UMENG_CHANNEL"))
 //        updateInterface.checkUpdate("com.talicai.timiclient", "2.3.4", 1, "anzhuoshichang")
                 .subscribeOn(Schedulers.io())
                 .concatMap(new Func1<ResponseCheckUpdate, Observable<ResponseCheckUpdate>>() {
