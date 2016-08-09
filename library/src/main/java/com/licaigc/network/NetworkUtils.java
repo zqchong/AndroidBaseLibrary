@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Environment;
 
 import com.licaigc.AndroidBaseLibrary;
 import com.licaigc.PermissionUtils;
+import com.licaigc.algorithm.hash.HashUtils;
 import com.licaigc.io.IoUtils;
 import com.licaigc.rxjava.SimpleEasySubscriber;
 
@@ -184,16 +186,30 @@ public class NetworkUtils {
     }
 
     // Download File
-    public static Observable<Void> downloadFile(String url, final File target) {
+
+    /**
+     * 默认存放在 `Context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)` 中.
+     * 需要 'WRITE_EXTERNAL_STORAGE' 权限.
+     * @param url
+     * @return
+     */
+    public static Observable<File> downloadFile(String url) {
+        if (!PermissionUtils.hasPermission("android.permission.WRITE_EXTERNAL_STORAGE")) {
+            return Observable.empty();
+        }
+
+        return downloadFile(url, new File(AndroidBaseLibrary.getContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), HashUtils.md5(url)));
+    }
+    public static Observable<File> downloadFile(String url, final File target) {
         return get(url)
                 .observeOn(Schedulers.io())
-                .map(new Func1<byte[], Void>() {
+                .map(new Func1<byte[], File>() {
                     @Override
-                    public Void call(byte[] bytes) {
+                    public File call(byte[] bytes) {
                         if (IoUtils.output(target, bytes) == null) {
                             throw new RuntimeException(String.format("Write failed: %s", target.getAbsolutePath()));
                         }
-                        return null;
+                        return target;
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread());
@@ -204,9 +220,9 @@ public class NetworkUtils {
     }
 
     public static void downloadFile(String url, final File target, final OnDownloadFile onDownloadFile) {
-        downloadFile(url, target).subscribe(new SimpleEasySubscriber<Void>() {
+        downloadFile(url, target).subscribe(new SimpleEasySubscriber<File>() {
             @Override
-            public void onFinish(boolean suc, Void result, Throwable throwable) {
+            public void onFinish(boolean suc, File result, Throwable throwable) {
                 super.onFinish(suc, result, throwable);
                 if (onDownloadFile != null) {
                     onDownloadFile.onFinish(suc);
