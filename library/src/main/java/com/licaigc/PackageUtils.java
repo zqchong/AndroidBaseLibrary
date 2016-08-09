@@ -13,6 +13,10 @@ import java.io.File;
 public class PackageUtils {
     public static final String TAG = "PackageUtils";
 
+    public static final String PKG_NAME_WECHAT = "com.tencent.mm";
+    public static final String PKG_NAME_QQ = "com.tencent.mobileqq";
+    public static final String PKG_NAME_SINA = "com.sina.weibo";
+
     // Version code
     public static int getVersionCode() {
         return getVersionCode(AndroidBaseLibrary.getContext().getPackageName());
