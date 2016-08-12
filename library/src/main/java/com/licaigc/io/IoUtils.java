@@ -1,8 +1,12 @@
 package com.licaigc.io;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * Created by walfud on 2015/11/19.
@@ -15,17 +19,17 @@ public class IoUtils {
     public static byte[] input(File file) {
         byte[] bytes = new byte[0];
 
-        FileInputStream fileInputStream = null;
+        InputStream inputStream = null;
         try {
-            fileInputStream = new FileInputStream(file);
+            inputStream = new BufferedInputStream(new FileInputStream(file));
             bytes = new byte[(int) file.length()];
-            fileInputStream.read(bytes);
+            inputStream.read(bytes);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (fileInputStream != null) {
+            if (inputStream != null) {
                 try {
-                    fileInputStream.close();
+                    inputStream.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -46,18 +50,18 @@ public class IoUtils {
     }
 
     public static File output(File file, byte[] bytes, boolean append) {
-        FileOutputStream fileOutputStream = null;
+        OutputStream outputStream = null;
         try {
-            fileOutputStream = new FileOutputStream(file, append);
-            fileOutputStream.write(bytes);
-            fileOutputStream.flush();
+            outputStream = new BufferedOutputStream(new FileOutputStream(file, append));
+            outputStream.write(bytes);
+            outputStream.flush();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         } finally {
-            if (fileOutputStream != null) {
+            if (outputStream != null) {
                 try {
-                    fileOutputStream.close();
+                    outputStream.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                     return null;
