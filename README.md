@@ -104,6 +104,7 @@ public class Foo {
 
 </LinearLayout>
 ```
+更详细的内容, 请看 [wiki](https://github.com/wealthworks/AndroidBaseLibrary/wiki/编码规范).
 
 # Contribution
 发起 PR, 我会尽快 Merge.
