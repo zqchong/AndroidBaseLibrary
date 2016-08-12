@@ -84,6 +84,27 @@ public class Foo {
 }
 ```
 
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="320dp"
+              android:layout_height="wrap_content"
+              android:gravity="center_horizontal"
+              android:orientation="vertical"
+              android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="骚年，是时候更新了~"
+        android:textSize="20sp"
+        android:textColor="#FF4A4A4A"/>
+
+</LinearLayout>
+```
+
 # Contribution
 发起 PR, 我会尽快 Merge.
 请注意, 新增功能请写注释, 并**在 [wiki](https://github.com/wealthworks/AndroidBaseLibrary/wiki) 中补充说明**.
