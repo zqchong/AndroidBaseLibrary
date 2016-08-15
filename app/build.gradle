@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.licaigc.androidbaselibrary"
-        minSdkVersion 12
+        minSdkVersion 14
         targetSdkVersion 23
         versionCode 1023
         versionName "2.3.3"
