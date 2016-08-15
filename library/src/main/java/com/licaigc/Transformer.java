@@ -256,6 +256,41 @@ public class Transformer {
         return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss (z)").format(calendar.getTime());
     }
 
+    // Number
+    /**
+     * Safe parse integer value
+     * @param s
+     * @return `0` if failed
+     */
+    public static int toInt(String s) {
+        int i = 0;
+
+        try {
+            i = Integer.valueOf(s);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return i;
+    }
+
+    /**
+     * Safe parse double value
+     * @param s
+     * @return `0.0` if failed
+     */
+    public static double toDouble(String s) {
+        double d = 0.0;
+
+        try {
+            d = Double.valueOf(s);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return d;
+    }
+
     // File
     public static List<File> stringCollection2FileList(Collection<String> stringCollection) {
         List<File> fileList = new ArrayList<>();
