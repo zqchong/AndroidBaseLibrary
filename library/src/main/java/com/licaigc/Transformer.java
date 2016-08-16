@@ -250,10 +250,13 @@ public class Transformer {
 
     // Time
     public static String timeInMillis2String(long millis) {
+        return timeInMillis2String(millis, false);
+    }
+    public static String timeInMillis2String(long millis, boolean timezone) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(millis);
 
-        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss (z)").format(calendar.getTime());
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss" + (timezone ? " (z)" : "")).format(calendar.getTime());
     }
 
     // Number
@@ -263,7 +266,10 @@ public class Transformer {
      * @return `0` if failed
      */
     public static int toInt(String s) {
-        int i = 0;
+        return toInt(s, 0);
+    }
+    public static int toInt(String s, int defaultValue) {
+        int i = defaultValue;
 
         try {
             i = Integer.valueOf(s);
@@ -280,7 +286,10 @@ public class Transformer {
      * @return `0.0` if failed
      */
     public static double toDouble(String s) {
-        double d = 0.0;
+        return toDouble(s, 0.0);
+    }
+    public static double toDouble(String s, double defaultValue) {
+        double d = defaultValue;
 
         try {
             d = Double.valueOf(s);
