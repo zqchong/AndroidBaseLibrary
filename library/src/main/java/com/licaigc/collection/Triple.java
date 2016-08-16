@@ -30,4 +30,9 @@ public class Triple<F, S, T> {
         Triple<?, ?, ?> p = (Triple<?, ?, ?>) o;
         return ObjectUtils.isEqual(p.first, first) && ObjectUtils.isEqual(p.second, second) && ObjectUtils.isEqual(p.third, third);
     }
+
+    @Override
+    public int hashCode() {
+        return (first == null ? 0 : first.hashCode()) ^ (second == null ? 0 : second.hashCode()) & (third == null ? 0 : third.hashCode());
+    }
 }
