@@ -39,5 +39,6 @@ public class MainActivity extends Activity {
                 mBtn.performClick();
             }
         });
+
     }
 }
